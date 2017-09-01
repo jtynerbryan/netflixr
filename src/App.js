@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import netflixWrapper from './netfilx_wrapper'
+import HomePage from './homePage.js'
 
 class App extends Component {
   constructor() {
@@ -15,16 +15,8 @@ class App extends Component {
   
 
   componentWillMount() {
-    console.log(netflixWrapper)
-    // fetch('http://netflixroulette.net/api/api.php?title=Attack%20on%20titan')
-    // .then(res => res.json()).then(res => console.log(res))
-    // JSON Response, resp is a JSON object
-netflixWrapper.createRequest({
-   title: "The Boondocks",
-   year: 2005
-}, function (resp) {
-   console.log("The Boondocks' Summary = " + resp.summary);
-});
+    fetch('https://api.themoviedb.org/3/search/person?api_key=305a31b8b260d70c65fd389cc6b7f2e7&query=Natalie')
+    .then(res => res.json()).then(res => console.log(res))
   }
 
   render() {
@@ -39,6 +31,7 @@ netflixWrapper.createRequest({
         </p>
         <div>
           
+          <HomePage />
 
         </div>
 
