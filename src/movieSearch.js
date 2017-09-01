@@ -2,11 +2,6 @@ import React from 'react'
 
 class MovieSearch extends React.Component {
 
-	constructor() {
-		super()
-
-	}
-
 	render() {
 		return(
 			<div>

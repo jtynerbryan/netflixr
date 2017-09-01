@@ -2,15 +2,30 @@ import React from 'react'
 
 class ActorSearch extends React.Component {
 
-	constructor() {
-		super()
+	state = {
+		searchResults: []
+	}
 
+	handleChange = (event) => {
+		this.setState({
+			searchResults: event.target.value
+		})
+	}
+
+	handleClick = () => {
+		fetch(`https://api.themoviedb.org/3/search/person?api_key=305a31b8b260d70c65fd389cc6b7f2e7&query=${this.state.searchResults.replace(/ /g, '+')}`)
+		.then(res => res.json())
+		.then(res => console.log(res))
 	}
 
 	render() {
 		return(
 			<div>
-				I am acting
+				<form onSubmit={this.handleClick.bind(this)}>
+				  <label>Search movies by Actor name</label>
+				  <input type="text" name="name" onChange={this.handleChange.bind(this)}/>
+				  <input type="submit" value="Submit"/>
+				</form>
 			</div>	
 		)
 	}
