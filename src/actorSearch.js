@@ -12,7 +12,8 @@ class ActorSearch extends React.Component {
 		})
 	}
 
-	handleClick = () => {
+	handleClick = (event) => {
+		event.preventDefault()
 		fetch(`https://api.themoviedb.org/3/search/person?api_key=305a31b8b260d70c65fd389cc6b7f2e7&query=${this.state.searchResults.replace(/ /g, '+')}`)
 		.then(res => res.json())
 		.then(res => console.log(res))
@@ -21,9 +22,9 @@ class ActorSearch extends React.Component {
 	render() {
 		return(
 			<div>
-				<form onSubmit={this.handleClick.bind(this)}>
+				<form onSubmit={this.handleClick}>
 				  <label>Search movies by Actor name</label>
-				  <input type="text" name="name" onChange={this.handleChange.bind(this)}/>
+				  <input type="text" name="name" onChange={this.handleChange}/>
 				  <input type="submit" value="Submit"/>
 				</form>
 			</div>	
